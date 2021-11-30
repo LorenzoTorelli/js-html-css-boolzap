@@ -83,9 +83,17 @@ const app = new Vue (
                     ],
                 },
             ], 
+            profile: 0,
+            messaggio:'',
         },
         methods: {
-
+            addMessage: function() {
+                console.log(this.contacts[this.profile].messages);
+                this.contacts[this.profile].messages.push({date:"ora",message:this.messaggio,status:"sent"});
+                this.messaggio='';
+                this.contacts[this.profile].messages.push({date:"ora",message:"ok",status:"received"});
+            },
+            
         }
     }
 )
