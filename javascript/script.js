@@ -85,14 +85,28 @@ const app = new Vue (
             ], 
             profile: 0,
             messaggio:'',
+            searchForUser: '',
         },
         methods: {
             addMessage: function() {
                 console.log(this.contacts[this.profile].messages);
                 this.contacts[this.profile].messages.push({date:"ora",message:this.messaggio,status:"sent"});
                 this.messaggio='';
+                setTimeout(this.answer, 1000)
+            },
+            answer: function() {
                 this.contacts[this.profile].messages.push({date:"ora",message:"ok",status:"received"});
             },
+
+            searchUser: function() {
+               this.contacts.filter(function(el) {
+                   console.log(this.searchForUser)
+                   return el.name.includes(this.searchForUser)
+               })
+                           
+            }
+
+            
             
         }
     }

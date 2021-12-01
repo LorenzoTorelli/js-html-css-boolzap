@@ -70,16 +70,19 @@ i {
     width: 30%;
     height: 100%;
     border-right: 0.2px solid grey;
+    display: flex;
+    flex-direction: column;
 }
 
 #users-list {
-    height: 480px;
+    height: 74%;
     width: 100%;
-    overflow: scroll;
+    overflow-y: auto;
+    flex-grow: 1;
 }
 
 #users-list .box-user {
-    height: 13%;
+    height: 80px;
 }
 
 .profile-box {
@@ -159,13 +162,17 @@ i {
 #right-column {
     width: 70%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 #main {
-    height: 84%;
+    flex-grow: 1;
     width: 100%;
     background-image: url("../img/mine.jpg");
     filter: invert(1);
     padding: 25px;
+    overflow-y: auto;
+
 }
 
 #chat-interaction {
@@ -194,9 +201,8 @@ i {
     padding: 10px;
     max-width: 70%;
     font-size: 15px;
-    border-radius: 20px;
+    border-radius: 15px;
     margin-bottom: 20px;
-    /* display: flex; */
 }
 .clearfix::after{
     content: "";
@@ -205,9 +211,7 @@ i {
 }
 .sent-color {
     background-color: #ff405a;
-    /* justify-self:end; */
-    /* color: black; */
-    /* text-align: right; */
+
     float: right;
 
 }
@@ -223,7 +227,8 @@ i {
     color: black;
     margin: 0px 20px;
     word-wrap:break-word;
-
+    /* margin-right: 80px; */
+    text-align: left;
 }
 
 .post-date {
@@ -232,10 +237,5 @@ i {
     text-align: right;
 }
 
-.sent-color .post-text{
-    text-align: left;
-}
 
-.received-color .post-text {
-    text-align: right;
 }
