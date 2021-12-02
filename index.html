@@ -46,7 +46,7 @@
                     </div>
 
                     <!-- rect search  -->
-                    <div id="search" class="box">
+                    <div id="search" class="box color-2">
                         <i class="fas fa-search" @click="searchUser()"></i>
                         <input class="input-bar" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchForUser" @keyup="searchUser()">
                     </div>
@@ -54,7 +54,7 @@
                     <!-- user list  -->
                     <div id="users-list" class="color-2">
                         <ul>
-                            <li class=" box-user profile-name left-column-profiles" v-for= "(element,index) in contacts" @click= "profile=index" :class="index==profile ? 'black-grey' : '' " v-show="element.visible">
+                            <li class=" box-user profile-name left-column-profiles" v-for= "(element,index) in contacts" @click= "profile=index" :class="index==profile ? 'color-1' : '' " v-show="element.visible">
                                 <div><img :src="`img/avatar${element.avatar}.jpg`" alt="avatar_io"></div>
                                 <div class="user-name">
                                     <h5>{{element.name}}</h5>
@@ -70,7 +70,7 @@
                 <div id="right-column">
 
                     <!-- rect profilo utente con cui si sta parlando  -->
-                    <div class="box profile-box"  :class="light==false ? 'black-grey' : 'light-grey' ">
+                    <div class="box profile-box color-1"  >
                         <div class="profile-name">
                             <img :src="`img/avatar${contacts[profile].avatar}.jpg`" alt="avatar_io">
                             <h5>{{contacts[profile].name}}</h5>
@@ -96,7 +96,7 @@
                     </div>
 
                     <!-- rect interzione chat -->
-                    <div id="chat-interaction" class="box"  :class="light==false ? 'black-dark' : 'light-grey' ">
+                    <div id="chat-interaction" class="box color-2">
                         <div class="c-i-icon"><i class="far fa-smile"></i></div>
                         <div class="c-i-icon"><i class="fas fa-paperclip"></i></div>
                         <div class="c-i-input"><input v-model="messaggio" class="input-bar" type="text" placeholder="Scrivi qui il tuo messaggio" @keyup.enter="addMessage()"></div>

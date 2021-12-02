@@ -23,31 +23,34 @@ i {
     --col-1:rgb(42,47,50);
     --col-2:rgb(19, 28, 33);
     --color-font:white;
+    --inverter:invert(1);
+    --s-color:#ff405a;
+    --r-color:#d5d0cd;
+    --color-font-text:black;
 }
+/* light-version */
 .light-mode {
     --bg-theme:linear-gradient( rgb(0,191,165) 20%, rgb(214,219,215) 20%);
-    --col-1:white;
-    --col-2:rgb(214,219,215);
+    --col-1:rgb(214,219,215);
+    --col-2:white;
     --color-font:black;
+    --inverter:invert(0);
+    --s-color:#00bfa5;
+    --r-color:white;
+    --color-font-text:white;
 }
 
 .theme {
     background: var(--bg-theme);
 }
 
-/* vecchio black-grey */
 .color-1 {
     background-color: var(--col-1);
 }
-/* vecchio black-dark */
 .color-2 {
     background-color: var(--col-2);
 }
-/* light version  */
 
-.light-grey {
-    background-color: white;
-}
 /* -------- main container -------- */
 #main-container {
     position: absolute;
@@ -56,7 +59,7 @@ i {
     top: 5%;
     height: 90%;
     display: flex;
-    border: 1px solid rgb(42,47,50);
+    border: 1px solid var(--col-1);
 }
 
 .box, .box-user {
@@ -124,7 +127,7 @@ i {
 .user-name {
     width: 100%;
     height: 100%;
-    border-bottom: 1px solid rgb(42,47,50);
+    border-bottom: 1px solid var(--col-1);
 }
 .user-name p {
     font-size: 10px;
@@ -133,6 +136,7 @@ i {
     /* align-items: bottom; */
     margin-top: 10px;
     line-height: 10px;
+    color: grey;
 }
 #users-list .profile-name h5{
     margin-top: 10px;
@@ -151,7 +155,7 @@ i {
     border-radius: 25px;
     padding: 10px;
     border: none;    
-    background-color: rgb(42,47,50);
+    background-color: var(--col-1);
 }
 
 #silenced {
@@ -180,7 +184,7 @@ i {
     cursor: pointer;
 }
 .left-column-profiles:hover {
-    background-color: rgb(42,47,50);
+    background-color: var(--col-1);
 }
 /* -------- colonna destra -------- */
 
@@ -194,7 +198,7 @@ i {
     flex-grow: 1;
     width: 100%;
     background-image: url("../img/mine.jpg");
-    filter: invert(1);
+    filter: var(--inverter);
     padding: 25px;
     overflow-y: auto;
 
@@ -234,21 +238,17 @@ i {
     clear: both;
 }
 .sent-color {
-    background-color: #ff405a;
-
+    background-color: var(--s-color);
     float: right;
 
 }
 .received-color {
-    background-color: #d5d0cd;
+    background-color: var(--r-color);
     float: left;
 }
-.color-post-green-l {
-    background-color: #00bfa5;
 
-}
 .post-text {
-    color: black;
+    color: var(--color-font-text);
     word-wrap:break-word;
     text-align: left;
 }
