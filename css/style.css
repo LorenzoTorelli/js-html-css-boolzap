@@ -26,7 +26,6 @@ i {
     --inverter:invert(1);
     --s-color:#ff405a;
     --r-color:#d5d0cd;
-    --color-font-text:black;
 }
 /* light-version */
 .light-mode {
@@ -37,7 +36,6 @@ i {
     --inverter:invert(0);
     --s-color:#00bfa5;
     --r-color:white;
-    --color-font-text:white;
 }
 
 .theme {
@@ -94,6 +92,10 @@ i {
     flex-direction: column;
 }
 
+.change-mode {
+    padding: 20px;
+    text-align: center;
+}
 #users-list {
     height: 74%;
     width: 100%;
@@ -201,6 +203,7 @@ i {
     filter: var(--inverter);
     padding: 25px;
     overflow-y: auto;
+    position: relative;
 
 }
 
@@ -224,13 +227,16 @@ i {
 }
 .post-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
 }
 .post {
     padding: 10px;
-    max-width: 70%;
+    max-width: 60%;
     font-size: 15px;
     border-radius: 15px;
-    margin-bottom: 20px;
+
 }
 .clearfix::after{
     content: "";
@@ -239,16 +245,18 @@ i {
 }
 .sent-color {
     background-color: var(--s-color);
-    float: right;
+    /* float: right; */
+    align-self: end;
 
 }
 .received-color {
     background-color: var(--r-color);
-    float: left;
+    /* float: left; */
+    align-self: start;
 }
 
 .post-text {
-    color: var(--color-font-text);
+    color: black;
     word-wrap:break-word;
     text-align: left;
 }
@@ -259,4 +267,36 @@ i {
     text-align: right;
 }
 
+.post-imp-menu{
+    width: 150px;
+    /* height: 80px; */
+    background-color: var(--col-2);
+    justify-content: end;
+    /* display: none; */
+    padding: 15px 10px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+.received-post {
+    align-self: flex-start;
 
+}
+.sent-post {
+   align-self: flex-end;
+}
+.post-rig {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.post-imp-menu li {
+    list-style: none;
+    cursor: pointer;
+}
+.post-imp-menu li:hover {
+    background-color: var(--col-1);
+}
+
+.active {
+    display: block;
+}

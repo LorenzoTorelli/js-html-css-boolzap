@@ -10,17 +10,22 @@ const app = new Vue (
                     messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Hai portato a spasso il cane?',
-                        status: 'sent'
+                        status: 'sent',
+                        seen:false,                 
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Ricordati di dargli da mangiare',
-                        status: 'sent'
+                        status: 'sent',
+                        seen:false,
+
                     },
                     {
                         date: '10/01/2020 16:15:22',
                         message: 'Tutto fatto!',
-                        status: 'received'
+                        status: 'received',
+                        seen:false,
+
                     }
                     ],
                 },
@@ -31,17 +36,23 @@ const app = new Vue (
                     messages: [{
                         date: '20/03/2020 16:30:00',
                         message: 'Ciao come stai?',
-                        status: 'sent'
+                        status: 'sent',
+                        seen:false,
+
                     },
                     {
                         date: '20/03/2020 16:30:55',
                         message: 'Bene grazie! Stasera ci vediamo?',
-                        status: 'received'
+                        status: 'received',
+                        seen:false,
+
                     },
                     {
                         date: '20/03/2020 16:35:00',
                         message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                        status: 'received'
+                        status: 'received',
+                        seen:false,
+
                     }
                     ],
                 },
@@ -52,17 +63,23 @@ const app = new Vue (
                     messages: [{
                         date: '28/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
-                        status: 'received'
+                        status: 'received',
+                        seen:false,
+
                     },
                     {
                         date: '28/03/2020 10:20:10',
                         message: 'Sicuro di non aver sbagliato chat?',
-                        status: 'sent'
+                        status: 'sent',
+                        seen:false,
+
                     },
                     {
                         date: '28/03/2020 16:15:22',
                         message: 'Ah scusa!',
-                        status: 'received'
+                        status: 'received',
+                        seen:false,
+
                     }
                     ],
                 },
@@ -73,12 +90,15 @@ const app = new Vue (
                     messages: [{
                         date: '10/01/2020 15:30:55',
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
-                        status: 'sent'
+                        status: 'sent',
+                        seen:false,
                     },
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
-                        status: 'received'
+                        status: 'received',
+                        seen:false,
+
                     }
                     ],
                 },
@@ -87,6 +107,8 @@ const app = new Vue (
             messaggio:'',
             searchForUser: '',
             light: true,
+            menuPost: false,
+            picked:'One',
         },
         methods: {
 
@@ -96,7 +118,8 @@ const app = new Vue (
                     this.contacts[this.profile].messages.push({
                         date:this.actualDate(),
                         message:this.messaggio,
-                        status:"sent"
+                        status:"sent",
+                        seen:false,
                     });
                 }
                 this.messaggio='';
@@ -108,7 +131,8 @@ const app = new Vue (
                 this.contacts[this.profile].messages.push({
                     date:this.actualDate(),
                     message:"ok",
-                    status:"received"
+                    status:"received",
+                    seen:false,
                 });
             },
 
@@ -136,9 +160,12 @@ const app = new Vue (
             actualDate: function() {
                 let now = dayjs();
                 return now.format('DD/MM/YYYY HH:mm:ss');
-            }
+            },
 
-            
+            deleteMessage: function(indice) {
+                this.contacts[this.profile].messages.splice(indice,1)
+
+            }
             
         }
     }

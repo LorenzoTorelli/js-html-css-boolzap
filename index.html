@@ -13,7 +13,7 @@
     <title>Boolzapp</title>
 </head>
 <body>
-    <div id="root" class="dark-mode">
+    <div id="root" :class="picked=='One' ? 'light-mode' : 'dark-mode'">
         <div id="container-all" class="theme">
             <div id="main-container">
 
@@ -33,6 +33,13 @@
                         </div>
                     </div>
 
+                    <div class="change-mode box color-2">
+                        <input type="radio" id="one" value="One" v-model="picked" checked>
+                        <label>Light Mode</label>
+                        <input type="radio" id="two" value="Two" v-model="picked">
+                        <label>Dark Mode</label>
+                    </div>                
+    
                     <!-- rect silenced  -->
                     <div id="silenced" class="box-user" >
                         <div class="silenced-icon">
@@ -58,13 +65,16 @@
                                 <div><img :src="`img/avatar${element.avatar}.jpg`" alt="avatar_io"></div>
                                 <div class="user-name">
                                     <h5>{{element.name}}</h5>
-                                    <!-- <svg viewBox="0 0 16 15" width="16" height="15" class=""><path fill="currentColor" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg> -->
                                     <p>{{element.messages[element.messages.length-1].message}}</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
+
+
+
+
 
                 <!-- colonna destra  -->
                 <div id="right-column">
@@ -83,15 +93,23 @@
 
                     <!-- rect chat  -->
                     <div id="main">
-                        <div class= "post-container clearfix" v-for="(mess,indice) in contacts[profile].messages">
-                            <div v-if="contacts[profile].messages[indice].status == 'received'" class="post received-color ">
+                        <div class= "post-container clearfix" v-for="(mess,indice) in contacts[profile].messages" >
+                            <div v-if="contacts[profile].messages[indice].status == 'received'" class="post received-color " @click="contacts[profile].messages[indice].seen = !contacts[profile].messages[indice].seen">
                                 <p class="post-text">{{contacts[profile].messages[indice].message}}</p>
                                 <p class="post-date">{{contacts[profile].messages[indice].date}}</p>
                             </div>
-                            <div v-else class="post sent-color">
+                            <div v-else class="post sent-color"  @click="contacts[profile].messages[indice].seen = !contacts[profile].messages[indice].seen">
                                 <p class="post-text">{{contacts[profile].messages[indice].message}}</p>
                                 <p class="post-date">{{contacts[profile].messages[indice].date}}</p>
                             </div>
+                            <div class="post-imp-menu" :class="contacts[profile].messages[indice].status == 'received' ? 'received-post' : 'sent-post'" v-if="contacts[profile].messages[indice].seen">
+                                <ul>
+                                    <li @click="deleteMessage(indice)">Rimuovi</li>
+                                    <li>Info Messaggio</li>
+                                </ul>
+                            </div>
+
+
                         </div>
                     </div>
 
