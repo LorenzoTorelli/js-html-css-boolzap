@@ -29,7 +29,7 @@
 i {
     cursor: pointer;
     font-size: 20px;
-    color: lightgray;
+    color: grey;
 }
 /* -------- main container -------- */
 #main-container {
@@ -109,6 +109,14 @@ i {
     height: 100%;
     border-bottom: 1px solid rgb(42,47,50);
 }
+.user-name p {
+    font-size: 10px;
+    overflow-x: hidden;
+    height: 15px;
+    /* align-items: bottom; */
+    margin-top: 10px;
+    line-height: 10px;
+}
 #users-list .profile-name h5{
     margin-top: 10px;
 }
@@ -182,10 +190,10 @@ i {
 }
 
 #chat-interaction .c-i-icon {
-    width: 10%;
+    width: 5%;
 }
 #chat-interaction .c-i-input{
-    width: 70%;
+    width: 85%;
 
 }
 #chat-interaction .c-i-icon, #chat-interaction .c-i-input{
@@ -238,4 +246,3 @@ i {
 }
 
 
-}

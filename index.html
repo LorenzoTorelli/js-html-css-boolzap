@@ -54,10 +54,11 @@
                     <!-- user list  -->
                     <div id="users-list" class="black-dark" >
                         <ul>
-                            <li class=" box-user profile-name left-column-profiles" v-for= "(element,index) in contacts" @click= "profile=index" :class="index==profile ? 'black-grey' : '' ">
+                            <li class=" box-user profile-name left-column-profiles" v-for= "(element,index) in contacts" @click= "profile=index" :class="index==profile ? 'black-grey' : '' " v-show="element.visible">
                                 <div><img :src="`img/avatar${element.avatar}.jpg`" alt="avatar_io"></div>
                                 <div class="user-name">
                                     <h5>{{element.name}}</h5>
+                                    <p>{{element.messages[element.messages.length-1].message}}</p>
                                 </div>
                             </li>
                         </ul>
@@ -75,7 +76,6 @@
                         </div>
                         <div class="icons">
                             <i class="fas fa-search"></i>
-                            <i class="fas fa-paperclip"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
@@ -107,6 +107,7 @@
 
 
     </div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="javascript/script.js"></script>

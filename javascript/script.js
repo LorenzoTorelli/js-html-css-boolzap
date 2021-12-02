@@ -90,20 +90,33 @@ const app = new Vue (
         methods: {
             addMessage: function() {
                 console.log(this.contacts[this.profile].messages);
-                this.contacts[this.profile].messages.push({date:"ora",message:this.messaggio,status:"sent"});
+                this.contacts[this.profile].messages.push({
+                    date:this.actualDate(),
+                    message:this.messaggio,
+                    status:"sent"
+                });
                 this.messaggio='';
                 setTimeout(this.answer, 1000)
             },
             answer: function() {
-                this.contacts[this.profile].messages.push({date:"ora",message:"ok",status:"received"});
+                this.contacts[this.profile].messages.push({
+                    date:this.actualDate(),
+                    message:"ok",
+                    status:"received"
+                });
             },
 
             searchUser: function() {
-               this.contacts.filter(function(el) {
-                   console.log(this.searchForUser)
-                   return el.name.includes(this.searchForUser)
-               })
-                           
+                // console.log(this.searchForUser)
+               this.contacts.forEach(element => {
+                   if(!element.name.includes(this.searchForUser)) {
+                       element.visible = false;
+                   }
+               });       
+            },
+            actualDate: function() {
+                let now = dayjs();
+                return now.format('DD/MM/YYYY HH:mm:ss');
             }
 
             
