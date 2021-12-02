@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    color: white;
+    color: var(--color-font);
 }
 
 #container-all {
@@ -11,25 +11,42 @@
     position: relative;
 }
 
-.dark-theme {
-    background: linear-gradient( rgb(0,191,165) 20%, rgb(19,28,33) 20%);
-}
-/* cambiare anche background-image di #main */
-/* .ligh-theme {
-    background: rgb(2,0,36);
-    background: linear-gradient( rgb(0,191,165) 20%, rgb(255,255,255) 20%);
-} */
-.black-grey {
-    background-color: rgb(42,47,50);
-}
-.black-dark {
-    background-color: rgb(19, 28, 33);
-}
-
 i {
     cursor: pointer;
     font-size: 20px;
     color: grey;
+}
+
+/* dark version  */
+.dark-mode {
+    --bg-theme:linear-gradient( rgb(0,191,165) 20%, rgb(19,28,33) 20%);
+    --col-1:rgb(42,47,50);
+    --col-2:rgb(19, 28, 33);
+    --color-font:white;
+}
+.light-mode {
+    --bg-theme:linear-gradient( rgb(0,191,165) 20%, rgb(214,219,215) 20%);
+    --col-1:white;
+    --col-2:rgb(214,219,215);
+    --color-font:black;
+}
+
+.theme {
+    background: var(--bg-theme);
+}
+
+/* vecchio black-grey */
+.color-1 {
+    background-color: var(--col-1);
+}
+/* vecchio black-dark */
+.color-2 {
+    background-color: var(--col-2);
+}
+/* light version  */
+
+.light-grey {
+    background-color: white;
 }
 /* -------- main container -------- */
 #main-container {
@@ -186,7 +203,6 @@ i {
 #chat-interaction {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
 }
 
 #chat-interaction .c-i-icon {
@@ -233,9 +249,7 @@ i {
 }
 .post-text {
     color: black;
-    margin: 0px 20px;
     word-wrap:break-word;
-    /* margin-right: 80px; */
     text-align: left;
 }
 

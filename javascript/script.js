@@ -86,18 +86,24 @@ const app = new Vue (
             profile: 0,
             messaggio:'',
             searchForUser: '',
+            light: true,
         },
         methods: {
+
+            // crea il messaggio
             addMessage: function() {
-                console.log(this.contacts[this.profile].messages);
-                this.contacts[this.profile].messages.push({
-                    date:this.actualDate(),
-                    message:this.messaggio,
-                    status:"sent"
-                });
+                if (this.messaggio != '') {
+                    this.contacts[this.profile].messages.push({
+                        date:this.actualDate(),
+                        message:this.messaggio,
+                        status:"sent"
+                    });
+                }
                 this.messaggio='';
                 setTimeout(this.answer, 1000)
             },
+
+            // risponde al messaggio dopo un secondo 
             answer: function() {
                 this.contacts[this.profile].messages.push({
                     date:this.actualDate(),
@@ -106,14 +112,27 @@ const app = new Vue (
                 });
             },
 
+            // cerca i nomi nella barra di ricerca 
             searchUser: function() {
-                // console.log(this.searchForUser)
                this.contacts.forEach(element => {
-                   if(!element.name.includes(this.searchForUser)) {
+                   let a = element.name.toLowerCase();
+                   let b = this.searchForUser.toLowerCase()
+                   if(!a.includes(b)) {
                        element.visible = false;
                    }
                });       
+               this.ricreateArray();
             },
+
+            ricreateArray: function() {
+                this.contacts.forEach(element => {
+                    if(this.searchForUser == '' ) {
+                        element.visible = true;
+                    }
+                });      
+            },
+
+            // ritorna la data e l'ora attuale 
             actualDate: function() {
                 let now = dayjs();
                 return now.format('DD/MM/YYYY HH:mm:ss');
